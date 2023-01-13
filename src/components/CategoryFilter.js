@@ -1,6 +1,6 @@
 import React from "react";
 
-function CategoryFilter({categories}) {
+function CategoryFilter({categories, updateCategory}) {
 
   function toggleSelection(event) {
     const buttons = Array.from(document.querySelectorAll(".buttons"))
@@ -9,6 +9,8 @@ function CategoryFilter({categories}) {
       });
 
       event.target.classList.add("selected");
+      const category = event.target.textContent
+      updateCategory(category);
     }
 
   return (
