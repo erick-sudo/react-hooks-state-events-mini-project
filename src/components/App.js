@@ -12,7 +12,9 @@ function App() {
   const [category, setCategory] = useState("All")
   const [tasks, setTasks] = useState(TASKS);
 
-  // setTasks([...tasks, newTask])
+  function addTask(newTask) {
+    setTasks([newTask,...tasks]);
+  }
 
   const tasksToDisplay = tasks.filter(task => {
     if(category === "All") { 
@@ -25,7 +27,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter updateCategory={setCategory} categories={CATEGORIES} />
-      <NewTaskForm addTask={setTasks} categories={CATEGORIES}/>
+      <NewTaskForm onTaskFormSubmit={addTask} categories={CATEGORIES}/>
       <TaskList tasks={tasksToDisplay} />
     </div>
   );

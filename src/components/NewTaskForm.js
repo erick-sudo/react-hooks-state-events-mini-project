@@ -1,22 +1,22 @@
 import React from "react";
 
-function NewTaskForm({categories, setTasks}) {
+function NewTaskForm({categories, onTaskFormSubmit}) {
 
   function handleSubmit(e) {
     e.preventDefault();
     //
-    const newTask = {
-      name: e.target.text.value,
-      category: e.target.category.value
-    }
 
-    
+    onTaskFormSubmit({
+      text: e.target.text.value,
+      category: e.target.category.value
+    });
+  }
 
   return (
     <form className="new-task-form" onSubmit={handleSubmit} >
       <label>
         Details
-        <input type="text" name="text" />
+        <input type="text" name="text" required/>
       </label>
       <label>
         Category

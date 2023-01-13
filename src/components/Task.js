@@ -5,7 +5,7 @@ function Task({text, category}) {
     <div className="task">
       <div className="label">{category}</div>
       <div className="text">{text}</div>
-      <button className="delete">X</button>
+      <button  className="delete">X</button>
     </div>
   );
 }
