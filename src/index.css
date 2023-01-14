@@ -3,9 +3,12 @@
   margin: 0;
   padding: 0;
 }
+html {
+  
+}
 
 body {
-  background: linear-gradient(#f7efef, #e6dcdc);
+  background: linear-gradient(45deg, #662828 0% 20%, #e6dcdc 20% 80%, #662828 80%  100%);
   min-height: 100vh;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

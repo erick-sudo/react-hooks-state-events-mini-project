@@ -1,11 +1,15 @@
 import React from "react";
 
-function Task({text, category}) {
+function Task({text, category, taskId, removeTask}) {
+
+  function handleDelete(event) {
+    removeTask(taskId)
+  }
   return (
     <div className="task">
       <div className="label">{category}</div>
       <div className="text">{text}</div>
-      <button  className="delete">X</button>
+      <button onClick={handleDelete}  className="delete">X</button>
     </div>
   );
 }

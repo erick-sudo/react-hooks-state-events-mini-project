@@ -9,11 +9,29 @@ import { CATEGORIES, TASKS } from "../data";
 // console.log({ CATEGORIES, TASKS });
 
 function App() {
+  const myTasks = TASKS.map( (task, index) => {
+    return {...task, id: index}
+  })
+
+  console.log(TASKS)
+  console.log(myTasks)
+
   const [category, setCategory] = useState("All")
-  const [tasks, setTasks] = useState(TASKS);
+  const [tasks, setTasks] = useState(myTasks);
 
   function addTask(newTask) {
-    setTasks([newTask,...tasks]);
+    setTasks([{...newTask, id: tasks.length},...tasks]);
+  }
+
+  function removeTask(taskId) {
+      let newTasks = tasks.filter(task => {
+        if(task.id === taskId) {
+          return false;
+        }
+        return true;
+      })
+
+      setTasks(newTasks)
   }
 
   const tasksToDisplay = tasks.filter(task => {
@@ -28,7 +46,7 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter updateCategory={setCategory} categories={CATEGORIES} />
       <NewTaskForm onTaskFormSubmit={addTask} categories={CATEGORIES}/>
-      <TaskList tasks={tasksToDisplay} />
+      <TaskList removeTask={removeTask} tasks={tasksToDisplay} />
     </div>
   );
 }
