@@ -13,25 +13,34 @@ function App() {
     return {...task, id: index}
   })
 
-  console.log(TASKS)
-  console.log(myTasks)
-
   const [category, setCategory] = useState("All")
   const [tasks, setTasks] = useState(myTasks);
 
-  function addTask(newTask) {
+  function onTaskFormSubmit(newTask) {
     setTasks([{...newTask, id: tasks.length},...tasks]);
   }
 
   function removeTask(taskId) {
-      let newTasks = tasks.filter(task => {
-        if(task.id === taskId) {
-          return false;
-        }
-        return true;
-      })
+    // alert(taskId)
+    // console.log(tasks)
+    let newTasks = tasks.filter(task => {
+      if(task.id === taskId) {
+        return false
+      } else {
+        return true
+      }      
+    })
 
-      setTasks(newTasks)
+    setTasks(newTasks)
+
+      // let newTasks = tasks.filter(task => {
+      //   if(task.id === taskId) {
+      //     return false;
+      //   }
+      //   return true;
+      // })
+
+      // setTasks(newTasks)
   }
 
   const tasksToDisplay = tasks.filter(task => {
@@ -45,7 +54,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter updateCategory={setCategory} categories={CATEGORIES} />
-      <NewTaskForm onTaskFormSubmit={addTask} categories={CATEGORIES}/>
+      <NewTaskForm onTaskFormSubmit={onTaskFormSubmit} categories={CATEGORIES}/>
       <TaskList removeTask={removeTask} tasks={tasksToDisplay} />
     </div>
   );
